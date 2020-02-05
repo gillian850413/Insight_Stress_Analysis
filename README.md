@@ -1,5 +1,5 @@
-# Insight_Project_Framework
-Framework for machine learning projects at Insight Data Science.
+# Stress Analysis in Social Media 
+Artificial Intelligence Fellow, Insight Data Science
 
 ## Motivation for this project format:
 - **Insight_Project_Framework** : Put all source code for production within structured directory
