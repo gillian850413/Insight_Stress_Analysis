@@ -73,21 +73,21 @@ You can input one or multiple sentences. Here is an valid input example:
 ["It's Friday, wish you have a nice weekend!", "Be Happy, keep smiling!"]
 ```
 
-![API](img/rest_api.gif)
 
 If you would like to deploy the model to your own cloud service, please check BentoML's 
 [Deploy Model Document](https://docs.bentoml.org/en/latest/deployment/index.html).
-
 
 
 ## Analysis
 For more information, please check notebook directory to see the analysis results of different models.
 
 ### Word2Vec (with TF-IDF) Result 
-![BERT](img/word2vec_result.png)
+![API](img/rest_api.gif)
+
 
 ### BERT Result
-![BERT](img/bert_result.png)
+
+
 
 
 
