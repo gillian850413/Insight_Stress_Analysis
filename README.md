@@ -41,12 +41,11 @@ python config.py
 ## Model Serving via REST API
 I served the model with Python BentoML package, which is a package that supports serving and 
 deploying machine learning models to production API in the cloud. The model I used for production is 
-word2vec + tfidf model. 
+"Word2Vec + Tf-idf" model. 
 
 ### Run REST API Locally with BentoML
 ```
-model_path=bentoml/repository/WordEmbeddingModel/20200206150926_DCA9FA
-bentoml serve $model_path
+bentoml serve bentoml
 ```
 
 #### Send Predict Request
@@ -65,26 +64,33 @@ response = requests.post("http://127.0.0.1:5000/predict", json=[{data_input}])
 print(response.text)
 ```
 
-### Run REST API on GCP
-Test the API by using REST API's UI. Click the "predict" function and input the texts you want to predict. Here is an 
-valid input example:
+### Run REST API on cloud service
+API Link: https://sentiment-ghxotopljq-uw.a.run.app
+
+To test the API, we can use REST API's UI. Click the  "app/predict" function and input the texts you want to predict. 
+You can input one or multiple sentences. Here is an valid input example:
 ```
-["It's Friday! We wish you a nice start into the weekend!", "Be Happy, Keep Smiling!"]
+["It's Friday, wish you have a nice weekend!", "Be Happy, keep smiling!"]
 ```
 
-API Link: https://sentiment-ghxotopljq-uw.a.run.app
+![API](img/rest_api.gif)
+
+If you would like to deploy the model to your own cloud service, please check BentoML's 
+[Deploy Model Document](https://docs.bentoml.org/en/latest/deployment/index.html).
 
 
 
 ## Analysis
-- Include some form of EDA (exploratory data analysis)
-- And/or include benchmarking of the model and results
-```
-# Example
+For more information, please check notebook directory to see the analysis results of different models.
 
-# Step 1
-# Step 2
-```
+### Word2Vec (with TF-IDF) Result 
+![BERT](img/word2vec_result.png)
+
+### BERT Result
+![BERT](img/bert_result.png)
+
+
+
 
 ## Reference
 - [[NLP] Performance of Different Word Embeddings on Text Classification](https://towardsdatascience.com/nlp-performance-of-different-word-embeddings-on-text-classification-de648c6262b)
