@@ -1,119 +1,80 @@
 # Stress Analysis in Social Media 
-Artificial Intelligence Fellow, Insight Data Science
+Social media is one of the most common way for people to express "stress" nowadays. Therefore, I conducted a sentiment 
+analysis to extract information and identify stress from social media posts. This project leverages the power of 
+natural language processing (NLP) and supervised learning to build models that accurately classify stressful and 
+non-stressful posts. It was inspired by the newly published paper called
+[Dreaddit: A Reddit Dataset for Stress Analysis in Social Media](https://arxiv.org/abs/1911.00133).
 
-## Motivation for this project format:
-- **Insight_Project_Framework** : Put all source code for production within structured directory
-- **tests** : Put all source code for testing in an easy to find location
-- **configs** : Enable modification of all preset variables within single directory (consisting of one or many config files for separate tasks)
-- **data** : Include example a small amount of data in the Github repository so tests can be run to validate installation
-- **build** : Include scripts that automate building of a standalone environment
-- **static** : Any images or content to include in the README or web framework if part of the pipeline
-
-## Setup
-Clone repository and update python path
-```
-repo_name=Insight_Project_Framework # URL of your new repository
-username=mrubash1 # Username for your personal github account
-git clone https://github.com/$username/$repo_name
-cd $repo_name
-echo "export $repo_name=${PWD}" >> ~/.bash_profile
-echo "export PYTHONPATH=$repo_name/src:${PYTHONPATH}" >> ~/.bash_profile
-source ~/.bash_profile
-```
-Create new development branch and switch onto it
-```
-branch_name=dev-readme_requisites-20180905 # Name of development branch, of the form 'dev-feature_name-date_of_creation'}}
-git checkout -b $branch_name
-```
-
-## Initial Commit
-Lets start with a blank slate: remove `.git` and re initialize the repo
-```
-cd $repo_name
-rm -rf .git   
-git init   
-git status
-```  
-You'll see a list of file, these are files that git doesn't recognize. At this point, feel free to change the directory names to match your project. i.e. change the parent directory Insight_Project_Framework and the project directory Insight_Project_Framework:
-Now commit these:
-```
-git add .
-git commit -m "Initial commit"
-git push origin $branch_name
-```
+For more information, please check out [Slides](bit.ly/37WNKbu)
 
 ## Requisites
+- MacOS or Linux
+- Python 3.7.4
+- conda 
+- pip
+- GPU (To run BERT model)
 
-- List all packages and software needed to build the environment
-- This could include cloud command line tools (i.e. gsutil), package managers (i.e. conda), etc.
+## Setup
+This project requires Python 3.7.4 and conda environment. To setup the environment, please follow these steps:
 
-#### Dependencies
-
-- [Streamlit](streamlit.io)
-
-#### Installation
-To install the package above, pleae run:
-```shell
-pip install -r requiremnts
+- Create a new conda virtual environment in local or cloud services
+```
+conda create -n new_env python=3.7.4 
+conda activate new_env 
+```
+- Clone the github repository
+```
+git clone https://github.com/gillian850413/Insight_Stress_Analysis.git
+```
+- Install the required packages in the conda environment
+```
+cd build
+conda install pip
+pip install -r requiremnts.txt
+```
+- For first time using running the project, you need to download some important data packages
+```
+cd new_env
+python config.py
 ```
 
-## Build Environment
-- Include instructions of how to launch scripts in the build subfolder
-- Build scripts can include shell scripts or python setup.py files
-- The purpose of these scripts is to build a standalone environment, for running the code in this repository
-- The environment can be for local use, or for use in a cloud environment
-- If using for a cloud environment, commands could include CLI tools from a cloud provider (i.e. gsutil from Google Cloud Platform)
-```
-# Example
+## Model Serving via REST API
+I served the model with Python BentoML package, which is a package that supports serving and 
+deploying machine learning models to production API in the cloud. The model I used for production is 
+word2vec + tfidf model. 
 
-# Step 1
-# Step 2
+### Run REST API Locally with BentoML
+```
+model_path=bentoml/repository/WordEmbeddingModel/20200206150926_DCA9FA
+bentoml serve $model_path
 ```
 
-## Configs
-- We recommond using either .yaml or .txt for your config files, not .json
-- **DO NOT STORE CREDENTIALS IN THE CONFIG DIRECTORY!!**
-- If credentials are needed, use environment variables or HashiCorp's [Vault](https://www.vaultproject.io/)
-
-
-## Test
-- Include instructions for how to run all tests after the software is installed
+#### Send Predict Request
+You can also run the API directly in terminal by sending prediction request with curl from command line:
 ```
-# Example
-
-# Step 1
-# Step 2
+curl -i \
+  --header "Content-Type: application/json" \
+  --request POST \
+  --data '[{data_input}]' \
+  http://localhost:5000/predict
 ```
-
-## Run Inference
-- Include instructions on how to run inference
-- i.e. image classification on a single image for a CNN deep learning project
+Or with python and request library:
 ```
-# Example
-
-# Step 1
-# Step 2
+import requests
+response = requests.post("http://127.0.0.1:5000/predict", json=[{data_input}])
+print(response.text)
 ```
 
-## Build Model
-- Include instructions of how to build the model
-- This can be done either locally or on the cloud
+### Run REST API on GCP
+Test the API by using REST API's UI. Click the "predict" function and input the texts you want to predict. Here is an 
+valid input example:
 ```
-# Example
-
-# Step 1
-# Step 2
+["It's Friday! We wish you a nice start into the weekend!", "Be Happy, Keep Smiling!"]
 ```
 
-## Serve Model
-- Include instructions of how to set up a REST or RPC endpoint
-- This is for running remote inference via a custom model
-```
-# Example
+API Link: https://sentiment-ghxotopljq-uw.a.run.app
 
-# Step 1
-# Step 2
-```
+
 
 ## Analysis
 - Include some form of EDA (exploratory data analysis)
@@ -124,3 +85,8 @@ pip install -r requiremnts
 # Step 1
 # Step 2
 ```
+
+## Reference
+- [[NLP] Performance of Different Word Embeddings on Text Classification](https://towardsdatascience.com/nlp-performance-of-different-word-embeddings-on-text-classification-de648c6262b)
+- [Predicting Movie Reviews with BERT on TF Hub](https://colab.research.google.com/github/google-research/bert/blob/master/predicting_movie_reviews_with_bert_on_tf_hub.ipynb)
+

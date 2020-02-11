@@ -1,0 +1,6 @@
+bentoml==0.6.1
+pandas
+numpy
+gensim
+scikit-learn
+nltk

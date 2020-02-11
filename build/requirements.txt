@@ -1,0 +1,11 @@
+pandas
+numpy
+matplotlib==3.0.3
+scikit-learn
+gensim
+nltk
+tensorflow-gpu==1.1.5
+tensorflow_hub
+bert-tensorflow
+wordcloud
+bentoml==0.6.1 
