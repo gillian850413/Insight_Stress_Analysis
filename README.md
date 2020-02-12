@@ -105,8 +105,7 @@ misclassifying a lot of non-stress posts as stress post.
 ![API](img/rest_api.gif)
 
 ### BERT Prediction
-![API](img/bert_result.png)
-
+<img src="https://github.com/gillian850413/Insight_Stress_Analysis/blob/master/img/bert_result.png" width="750" height="200" />
 
 For more information, please check notebook directory to see the analysis results of different models.
 
