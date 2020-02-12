@@ -38,8 +38,8 @@ cd new_env
 python config.py
 ```
 
-## Model Serving via REST API
-I served the model with Python BentoML package, which is a package that supports serving and 
+## REST API
+I served the stress analysis model with Python BentoML package, which is a package that supports serving and 
 deploying machine learning models to production API in the cloud. The model I used for production is 
 "Word2Vec + Tf-idf" model. 
 
@@ -79,13 +79,23 @@ If you would like to deploy the model to your own cloud service, please check Be
 
 
 ## Analysis
-For more information, please check notebook directory to see the analysis results of different models.
 
-### Word2Vec (with TF-IDF) Result 
+Overall model result
+
+| Feature Extraction Model | Best Classification Model | Precision | Recall | F1-Score |
+| :-------------    | :-------------  | :-------- |:-------| :------- |
+| TF-IDF            | Logistic Regression         | 75.1%     | 75.7%  | 75.4%    |
+| Word2Vec + TF-IDF | Random Forest   | 69.4%     | 84.8%  | 76.3%    |
+| BERT              | Fine Tuning NN  | 80.8%     | 81.0%  | 80.9%    |
+
+### Word2Vec (with TF-IDF) Prediction 
 ![API](img/rest_api.gif)
 
 
-### BERT Result
+### BERT Prediction
+To test the bert model, please check notebook/Stress_Analysis_BERT.ipynb
+
+For more information, please check notebook directory to see the analysis results of different models.
 
 
 
