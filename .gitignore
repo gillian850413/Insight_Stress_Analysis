@@ -1,0 +1,6 @@
+# don't track large data file
+/bentoml/__pycache__/
+/script/__pycache__/
+/script/.ipynb_checkpoints/
+/notebook/.ipynb_checkpoints/
+

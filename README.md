@@ -38,31 +38,34 @@ cd new_env
 python config.py
 ```
 
-## REST API
+## Run Word2Vec Model with REST API
 I served the stress analysis model with Python BentoML package, which is a package that supports serving and 
 deploying machine learning models to production API in the cloud. The model I used for production is 
 "Word2Vec + Tf-idf" model. 
 
 ### Run REST API Locally with BentoML
 ```
-bentoml serve bentoml
+cd model
+bentoml serve model
 ```
 
 #### Send Predict Request
-You can also run the API directly in terminal by sending prediction request with curl from command line:
+You can also run the API directly in terminal by sending prediction request with curl from command line. 
+Here is an example:
 ```
 curl -i \
   --header "Content-Type: application/json" \
   --request POST \
-  --data '[{data_input}]' \
+  --data '["I like you", "I feel stressful"]' \
   http://localhost:5000/predict
 ```
-Or with python and request library:
+Or python and request library:
 ```
 import requests
-response = requests.post("http://127.0.0.1:5000/predict", json=[{data_input}])
+response = requests.post("http://127.0.0.1:5000/predict", json=["I like you", "I feel stressful"])
 print(response.text)
 ```
+You can replace ["I like you", "I feel stressful"] to your own text.
 
 ### Run REST API on cloud service
 API Link: https://sentiment-ghxotopljq-uw.a.run.app
@@ -72,15 +75,24 @@ You can input one or multiple sentences. Here is an valid input example:
 ```
 ["It's Friday, wish you have a nice weekend!", "Be Happy, keep smiling!"]
 ```
-
-
-If you would like to deploy the model to your own cloud service, please check BentoML's 
+Check "Analysis" section for API demo. If you would like to deploy the model to your own cloud service, please check BentoML's 
 [Deploy Model Document](https://docs.bentoml.org/en/latest/deployment/index.html).
 
 
 ## Analysis
+In this project, I trained the dataset with three feature extraction models TF-IDF, Word2Vec with TF-IDF as weights and 
+BERT. After extracting the features, I trained the features with traditional classification models such as logistic
+regression, SVM and random forest. Besides, BERT uses a fine tuning neural network to classify the text based on sentences. 
 
-Overall model result
+### Overall model results
+- Recall is the most important metric because we want to identify the stress posts accurately. However, we also want to prevent
+misclassifying a lot of non-stress posts as stress post. 
+- Although word2vec+tfidf with random forest has the highest recall, it also misclassified a lot of non-stress as stress 
+(low precision). 
+    - Some sentences may look non-stress, but they include words with high tfidf weights in stress posts (from train set),
+    which may make them be classified as stress.
+    
+- BERT is the most stable model in this case, with a balanced FP and FN. 
 
 | Feature Extraction Model | Best Classification Model | Precision | Recall | F1-Score |
 | :-------------    | :-------------  | :-------- |:-------| :------- |
@@ -91,9 +103,9 @@ Overall model result
 ### Word2Vec (with TF-IDF) Prediction 
 ![API](img/rest_api.gif)
 
-
 ### BERT Prediction
-To test the bert model, please check notebook/Stress_Analysis_BERT.ipynb
+![API](img/bert_result.png)
+
 
 For more information, please check notebook directory to see the analysis results of different models.
 
