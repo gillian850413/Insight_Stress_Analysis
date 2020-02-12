@@ -93,6 +93,7 @@ misclassifying a lot of non-stress posts as stress post.
     which may make them be classified as stress.
     
 - BERT is the most stable model in this case, with a balanced FP and FN. 
+- Both model can predict whether the text is stressful or non stressful and provide a confidence score
 
 | Feature Extraction Model | Best Classification Model | Precision | Recall | F1-Score |
 | :-------------    | :-------------  | :-------- |:-------| :------- |
