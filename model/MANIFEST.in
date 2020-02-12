@@ -1,0 +1,2 @@
+include WordEmbeddingModel/bentoml.yml
+graft WordEmbeddingModel/artifacts

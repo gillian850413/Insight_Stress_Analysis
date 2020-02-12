@@ -1,0 +1,36 @@
+version: 0.6.1
+kind: BentoService
+metadata:
+  created_at: 2020-02-06 23:09:55.458578
+  service_name: WordEmbeddingModel
+  service_version: 20200206150926_DCA9FA
+  module_name: word_embedding_model
+  module_file: ../word_embedding_model.py
+env:
+  pip_dependencies:
+  - bentoml==0.6.1
+  - pandas
+  - numpy
+  - gensim
+  - scikit-learn
+  - nltk
+  conda_env:
+    name: bentoml-WordEmbeddingModel
+    channels:
+    - defaults
+    dependencies:
+    - python=3.7.4
+    - pip
+  python_version: 3.7.4
+apis:
+- name: predict
+  handler_type: DataframeHandler
+  docs: BentoService API
+- name: preprocess
+  handler_type: DataframeHandler
+  docs: BentoService API
+artifacts:
+- name: word_vectorizer
+  artifact_type: PickleArtifact
+- name: word_embedding_rf
+  artifact_type: PickleArtifact
