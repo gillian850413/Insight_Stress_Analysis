@@ -4,8 +4,9 @@ matplotlib==3.0.3
 scikit-learn
 gensim
 nltk
-tensorflow-gpu==1.15.2
+tensorflow==1.15
 tensorflow_hub
 bert-tensorflow
 wordcloud
-bentoml==0.6.1 
+bentoml
+tqdm

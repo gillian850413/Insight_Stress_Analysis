@@ -1,0 +1,79 @@
+[2020-02-05 23:42:10,571] {bundler.py:161} INFO - BentoService bundle 'WordEmbeddingRFModel:20200205234141_401C25' created at: /private/var/folders/xb/6z8y2h493gqb0zxz171jkflw0000gn/T/bentoml-temp-nirmy404
+[2020-02-05 23:42:10,728] {bento_repository_api.py:114} INFO - BentoService bundle 'WordEmbeddingRFModel:20200205234141_401C25' created at: /Users/gillianchiang/bentoml/repository/WordEmbeddingRFModel/20200205234141_401C25
+[2020-02-05 23:42:56,240] {loader.py:114} WARNING - Module `word_embedding_rf_model` already loaded, using existing imported module.
+[2020-02-06 00:27:39,519] {service.py:531} WARNING - BentoService 'WordEmbeddingRFModel' #pack overriding existing artifact 'word_vectorizer'
+[2020-02-06 00:27:39,523] {service.py:531} WARNING - BentoService 'WordEmbeddingRFModel' #pack overriding existing artifact 'word_embedding_rf'
+[2020-02-06 00:30:36,827] {bundler.py:161} INFO - BentoService bundle 'WordEmbeddingRFModel:20200206003006_5D575D' created at: /private/var/folders/xb/6z8y2h493gqb0zxz171jkflw0000gn/T/bentoml-temp-9q8wixlr
+[2020-02-06 00:30:37,006] {bento_repository_api.py:114} INFO - BentoService bundle 'WordEmbeddingRFModel:20200206003006_5D575D' created at: /Users/gillianchiang/bentoml/repository/WordEmbeddingRFModel/20200206003006_5D575D
+[2020-02-06 00:30:46,463] {loader.py:114} WARNING - Module `word_embedding_rf_model` already loaded, using existing imported module.
+[2020-02-06 10:36:42,953] {yatai_service_impl.py:332} INFO - Getting latest version WordEmbeddingRFModel:20200206003006_5D575D
+[2020-02-06 11:06:14,022] {bento_api_server.py:381} ERROR - Exception on /predict [POST]
+Traceback (most recent call last):
+  File "/Users/gillianchiang/opt/anaconda3/lib/python3.7/site-packages/bentoml/server/bento_api_server.py", line 326, in api_func_wrapper
+    response = api.handle_request(request)
+  File "/Users/gillianchiang/opt/anaconda3/lib/python3.7/site-packages/bentoml/service.py", line 92, in handle_request
+    return self.handler.handle_request(request, self.func)
+  File "/Users/gillianchiang/opt/anaconda3/lib/python3.7/site-packages/bentoml/handlers/dataframe_handler.py", line 144, in handle_request
+    result = func(df)
+  File "/Users/gillianchiang/bentoml/repository/WordEmbeddingRFModel/20200206003006_5D575D/WordEmbeddingRFModel/../word_embedding_rf_model.py", line 25, in predict
+    input_matrix = self.data_preprocess(series)
+  File "/Users/gillianchiang/bentoml/repository/WordEmbeddingRFModel/20200206003006_5D575D/WordEmbeddingRFModel/../word_embedding_rf_model.py", line 18, in data_preprocess
+    preprocess_series = Posts(series).preprocess()
+  File "/Users/gillianchiang/bentoml/repository/WordEmbeddingRFModel/20200206003006_5D575D/preprocess.py", line 48, in preprocess
+    tokens = self.tokenization()
+  File "/Users/gillianchiang/bentoml/repository/WordEmbeddingRFModel/20200206003006_5D575D/preprocess.py", line 18, in tokenization
+    tokens_df = self.text_df.progress_apply(lambda x: tokenizer.tokenize(x.lower()))
+  File "/Users/gillianchiang/opt/anaconda3/lib/python3.7/site-packages/tqdm/std.py", line 736, in inner
+    result = getattr(df, df_function)(wrapper, **kwargs)
+  File "/Users/gillianchiang/opt/anaconda3/lib/python3.7/site-packages/pandas/core/series.py", line 4042, in apply
+    mapped = lib.map_infer(values, f, convert=convert_dtype)
+  File "pandas/_libs/lib.pyx", line 2228, in pandas._libs.lib.map_infer
+  File "/Users/gillianchiang/opt/anaconda3/lib/python3.7/site-packages/tqdm/std.py", line 732, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/gillianchiang/bentoml/repository/WordEmbeddingRFModel/20200206003006_5D575D/preprocess.py", line 18, in <lambda>
+    tokens_df = self.text_df.progress_apply(lambda x: tokenizer.tokenize(x.lower()))
+AttributeError: 'list' object has no attribute 'lower'
+[2020-02-06 11:22:00,340] {yatai_service_impl.py:332} INFO - Getting latest version WordEmbeddingRFModel:20200206003006_5D575D
+[2020-02-06 11:26:02,958] {yatai_service_impl.py:332} INFO - Getting latest version WordEmbeddingRFModel:20200206003006_5D575D
+[2020-02-06 13:24:28,991] {yatai_service_impl.py:332} INFO - Getting latest version WordEmbeddingRFModel:20200206003006_5D575D
+[2020-02-06 13:26:20,635] {yatai_service_impl.py:332} INFO - Getting latest version WordEmbeddingRFModel:20200206003006_5D575D
+[2020-02-06 13:27:27,007] {yatai_service_impl.py:332} INFO - Getting latest version WordEmbeddingRFModel:20200206003006_5D575D
+[2020-02-06 13:28:36,490] {yatai_service_impl.py:332} INFO - Getting latest version WordEmbeddingRFModel:20200206003006_5D575D
+[2020-02-06 13:45:58,764] {bundler.py:161} INFO - BentoService bundle 'WordEmbeddingRFModel:20200206134526_1C4082' created at: /private/var/folders/xb/6z8y2h493gqb0zxz171jkflw0000gn/T/bentoml-temp-gcitv29u
+[2020-02-06 13:45:58,911] {bento_repository_api.py:114} INFO - BentoService bundle 'WordEmbeddingRFModel:20200206134526_1C4082' created at: /Users/gillianchiang/bentoml/repository/WordEmbeddingRFModel/20200206134526_1C4082
+[2020-02-06 13:52:42,859] {bundler.py:161} INFO - BentoService bundle 'WordEmbeddingRFModel:20200206135210_1B6A1F' created at: /private/var/folders/xb/6z8y2h493gqb0zxz171jkflw0000gn/T/bentoml-temp-hdb5f0y9
+[2020-02-06 13:52:42,960] {bento_repository_api.py:114} INFO - BentoService bundle 'WordEmbeddingRFModel:20200206135210_1B6A1F' created at: /Users/gillianchiang/bentoml/repository/WordEmbeddingRFModel/20200206135210_1B6A1F
+[2020-02-06 13:57:09,271] {loader.py:114} WARNING - Module `word_embedding_rf_model` already loaded, using existing imported module.
+[2020-02-06 13:57:55,759] {yatai_service_impl.py:332} INFO - Getting latest version WordEmbeddingRFModel:20200206135210_1B6A1F
+[2020-02-06 13:58:14,413] {yatai_service_impl.py:332} INFO - Getting latest version WordEmbeddingRFModel:20200206135210_1B6A1F
+[2020-02-06 14:10:23,926] {loader.py:114} WARNING - Module `word_embedding_rf_model` already loaded, using existing imported module.
+[2020-02-06 14:25:07,576] {bundler.py:161} INFO - BentoService bundle 'WordEmbeddingModel:20200206142432_62E434' created at: /private/var/folders/xb/6z8y2h493gqb0zxz171jkflw0000gn/T/bentoml-temp-e37xvk5t
+[2020-02-06 14:25:07,680] {bento_repository_api.py:114} INFO - BentoService bundle 'WordEmbeddingModel:20200206142432_62E434' created at: /Users/gillianchiang/bentoml/repository/WordEmbeddingModel/20200206142432_62E434
+[2020-02-06 14:25:51,897] {loader.py:114} WARNING - Module `word_embedding_model` already loaded, using existing imported module.
+[2020-02-06 14:26:18,419] {service.py:531} WARNING - BentoService 'WordEmbeddingModel' #pack overriding existing artifact 'word_vectorizer'
+[2020-02-06 14:26:18,424] {service.py:531} WARNING - BentoService 'WordEmbeddingModel' #pack overriding existing artifact 'word_embedding_rf'
+[2020-02-06 14:26:55,637] {service.py:531} WARNING - BentoService 'WordEmbeddingModel' #pack overriding existing artifact 'word_vectorizer'
+[2020-02-06 14:26:55,641] {service.py:531} WARNING - BentoService 'WordEmbeddingModel' #pack overriding existing artifact 'word_embedding_rf'
+[2020-02-06 14:27:25,083] {bundler.py:161} INFO - BentoService bundle 'WordEmbeddingModel:20200206142432_62E434' created at: /private/var/folders/xb/6z8y2h493gqb0zxz171jkflw0000gn/T/bentoml-temp-wq__i7bj
+[2020-02-06 14:31:24,192] {bundler.py:161} INFO - BentoService bundle 'WordEmbeddingModel:20200206143054_1EF6A9' created at: /private/var/folders/xb/6z8y2h493gqb0zxz171jkflw0000gn/T/bentoml-temp-_hw2asys
+[2020-02-06 14:31:24,345] {bento_repository_api.py:114} INFO - BentoService bundle 'WordEmbeddingModel:20200206143054_1EF6A9' created at: /Users/gillianchiang/bentoml/repository/WordEmbeddingModel/20200206143054_1EF6A9
+[2020-02-06 14:31:30,094] {loader.py:114} WARNING - Module `word_embedding_model` already loaded, using existing imported module.
+[2020-02-06 14:33:07,312] {yatai_service_impl.py:332} INFO - Getting latest version WordEmbeddingRFModel:20200206135210_1B6A1F
+[2020-02-06 14:34:37,738] {yatai_service_impl.py:332} INFO - Getting latest version WordEmbeddingRFModel:20200206135210_1B6A1F
+[2020-02-06 14:35:38,592] {yatai_service_impl.py:332} INFO - Getting latest version WordEmbeddingRFModel:20200206135210_1B6A1F
+[2020-02-06 14:36:06,071] {yatai_service_impl.py:332} INFO - Getting latest version WordEmbeddingRFModel:20200206135210_1B6A1F
+[2020-02-06 14:36:25,719] {yatai_service_impl.py:332} INFO - Getting latest version WordEmbeddingRFModel:20200206135210_1B6A1F
+[2020-02-06 14:37:50,820] {yatai_service_impl.py:332} INFO - Getting latest version WordEmbeddingRFModel:20200206135210_1B6A1F
+[2020-02-06 14:39:24,492] {yatai_service_impl.py:332} INFO - Getting latest version WordEmbeddingRFModel:20200206135210_1B6A1F
+[2020-02-06 15:03:49,609] {bundler.py:161} INFO - BentoService bundle 'WordEmbeddingModel:20200206150317_BE49B2' created at: /private/var/folders/xb/6z8y2h493gqb0zxz171jkflw0000gn/T/bentoml-temp-r5zk4eqi
+[2020-02-06 15:03:49,733] {bento_repository_api.py:114} INFO - BentoService bundle 'WordEmbeddingModel:20200206150317_BE49B2' created at: /Users/gillianchiang/bentoml/repository/WordEmbeddingModel/20200206150317_BE49B2
+[2020-02-06 15:04:14,601] {loader.py:114} WARNING - Module `word_embedding_model` already loaded, using existing imported module.
+[2020-02-06 15:04:35,195] {service.py:531} WARNING - BentoService 'WordEmbeddingModel' #pack overriding existing artifact 'word_vectorizer'
+[2020-02-06 15:04:35,199] {service.py:531} WARNING - BentoService 'WordEmbeddingModel' #pack overriding existing artifact 'word_embedding_rf'
+[2020-02-06 15:05:03,674] {bundler.py:161} INFO - BentoService bundle 'WordEmbeddingModel:20200206150317_BE49B2' created at: /private/var/folders/xb/6z8y2h493gqb0zxz171jkflw0000gn/T/bentoml-temp-1h2lbilc
+[2020-02-06 15:07:38,106] {bundler.py:161} INFO - BentoService bundle 'WordEmbeddingModel:20200206150709_40C2F6' created at: /private/var/folders/xb/6z8y2h493gqb0zxz171jkflw0000gn/T/bentoml-temp-0ita82y_
+[2020-02-06 15:07:38,191] {bento_repository_api.py:114} INFO - BentoService bundle 'WordEmbeddingModel:20200206150709_40C2F6' created at: /Users/gillianchiang/bentoml/repository/WordEmbeddingModel/20200206150709_40C2F6
+[2020-02-06 15:07:38,501] {loader.py:114} WARNING - Module `word_embedding_model` already loaded, using existing imported module.
+[2020-02-06 15:09:55,468] {bundler.py:161} INFO - BentoService bundle 'WordEmbeddingModel:20200206150926_DCA9FA' created at: /private/var/folders/xb/6z8y2h493gqb0zxz171jkflw0000gn/T/bentoml-temp-sp8km8dn
+[2020-02-06 15:09:55,656] {bento_repository_api.py:114} INFO - BentoService bundle 'WordEmbeddingModel:20200206150926_DCA9FA' created at: /Users/gillianchiang/bentoml/repository/WordEmbeddingModel/20200206150926_DCA9FA
+[2020-02-06 15:10:01,033] {loader.py:114} WARNING - Module `word_embedding_model` already loaded, using existing imported module.
