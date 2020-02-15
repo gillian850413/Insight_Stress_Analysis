@@ -32,19 +32,19 @@ cd Insight_Stress_Analysis/build
 conda install pip
 pip install -r requirements.txt
 ```
+- If have problem install BentoML with requirement.txt file
+```
+pip install bentoml
+```
 - For first time using running the project, you need to download some important data packages
 ```
-cd new_env
+cd Insight_Stress_Analysis
 python config.py
 ```
 ### Additional Setup
 - If you have GPU and would like to run the BERT model, install:
 ```
 pip install tensorflow-gpu==1.15
-```
-- If have problem install BentoML with requirement.txt file
-```
-pip install bentoml
 ```
 
 ## Run Word2Vec Model with REST API
@@ -59,7 +59,13 @@ bentoml serve bentoml/repository/WordEmbeddingModel/20200206150926_DCA9FA
 ```
 
 #### Send Predict Request
-You can also run the API directly in terminal by sending prediction request with curl from command line. 
+After you serve the model, you can run REST API on http://127.0.0.1:5000/ Click the  "app/predict" function and input the texts you want to predict. You can input one or multiple sentences. Here is an valid input example:
+```
+["I like you", "I feel stressful"]
+```
+Check "Analysis" section for API demo. 
+
+Or you can also run the API directly in terminal by sending prediction request with curl from command line. 
 Here is an example:
 ```
 curl -i \
@@ -68,25 +74,18 @@ curl -i \
   --data '["I like you", "I feel stressful"]' \
   http://localhost:5000/predict
 ```
-Or python and request library:
+Or with python and request library:
 ```
 import requests
 response = requests.post("http://127.0.0.1:5000/predict", json=["I like you", "I feel stressful"])
 print(response.text)
 ```
-You can replace ["I like you", "I feel stressful"] to your own text.
+Replace ["I like you", "I feel stressful"] to your own text.
 
 ### Run REST API on cloud service
-API Link: https://sentiment-ghxotopljq-uw.a.run.app
-
-To test the API, we can use REST API's UI. Click the  "app/predict" function and input the texts you want to predict. 
-You can input one or multiple sentences. Here is an valid input example:
-```
-["It's Friday, wish you have a nice weekend!", "Be Happy, keep smiling!"]
-```
-Check "Analysis" section for API demo. If you would like to deploy the model to your own cloud service, please check BentoML's 
+- I have deployed the API on google cloud platform. Check this link to run the API without any installation: https://sentiment-ghxotopljq-uw.a.run.app 
+- If you would like to deploy the model to your own cloud service, please check BentoML's 
 [Deploy Model Document](https://docs.bentoml.org/en/latest/deployment/index.html).
-
 
 ## Analysis
 In this project, I trained the dataset with three feature extraction models TF-IDF, Word2Vec with TF-IDF as weights and 
