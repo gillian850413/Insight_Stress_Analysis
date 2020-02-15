@@ -50,7 +50,7 @@ pip install tensorflow-gpu==1.15
 ## Run Word2Vec Model with REST API
 I served the stress analysis model with Python BentoML package, which is a package that supports serving and 
 deploying machine learning models to production API in the cloud. The model I used for production is 
-"Word2Vec + Tf-idf" model. 
+"Word2Vec + Tf-IDF" model. 
 
 ### Run REST API Locally
 Serve the model to REST API with Python bentoml package.
@@ -59,13 +59,13 @@ bentoml serve bentoml/repository/WordEmbeddingModel/20200206150926_DCA9FA
 ```
 
 #### Send Predict Request
-After you serve the model, you can run REST API on http://127.0.0.1:5000/ Click the  "app/predict" function and input the texts you want to predict. You can input one or multiple sentences. Here is an valid input example:
+- After you serve the model, you can run REST API on http://127.0.0.1:5000/ Click the  "app/predict" function and input the texts you want to predict. You can input one or multiple sentences. Here is an valid input example:
 ```
 ["I like you", "I feel stressful"]
 ```
 Check "Analysis" section for API demo. 
 
-Or you can also run the API directly in terminal by sending prediction request with curl from command line. 
+- or you can also run the API directly in terminal by sending prediction request with curl from command line. 
 Here is an example:
 ```
 curl -i \
@@ -74,7 +74,7 @@ curl -i \
   --data '["I like you", "I feel stressful"]' \
   http://localhost:5000/predict
 ```
-Or with python and request library:
+- or with python and request library:
 ```
 import requests
 response = requests.post("http://127.0.0.1:5000/predict", json=["I like you", "I feel stressful"])
@@ -104,7 +104,7 @@ misclassifying a lot of non-stress posts as stress post.
 - Both model can predict whether the text is stressful or non stressful and provide a confidence score
 
 | Feature Extraction Model | Best Classification Model | Precision | Recall | F1-Score |
-| :-------------    | :-------------  | :-------- |:-------| :------- |
+| :---------------- | :-------------  | :-------- |:-------| :------- |
 | TF-IDF            | Logistic Regression         | 75.1%     | 75.7%  | 75.4%    |
 | Word2Vec + TF-IDF | Random Forest   | 69.4%     | 84.8%  | 76.3%    |
 | BERT              | Fine Tuning NN  | 80.8%     | 81.0%  | 80.9%    |
