@@ -28,14 +28,23 @@ git clone https://github.com/gillian850413/Insight_Stress_Analysis.git
 ```
 - Install the required packages in the conda environment
 ```
-cd build
+cd Insight_Stress_Analysis/build
 conda install pip
-pip install -r requiremnts.txt
+pip install -r requirements.txt
 ```
 - For first time using running the project, you need to download some important data packages
 ```
 cd new_env
 python config.py
+```
+### Additional Setup
+- If you have GPU and would like to run the BERT model, install:
+```
+pip install tensorflow-gpu==1.15
+```
+- If have problem install BentoML with requirement.txt file
+```
+pip install bentoml
 ```
 
 ## Run Word2Vec Model with REST API
@@ -43,10 +52,10 @@ I served the stress analysis model with Python BentoML package, which is a packa
 deploying machine learning models to production API in the cloud. The model I used for production is 
 "Word2Vec + Tf-idf" model. 
 
-### Run REST API Locally with BentoML
+### Run REST API Locally
+Serve the model to REST API with Python bentoml package.
 ```
-cd model
-bentoml serve model
+bentoml serve bentoml/repository/WordEmbeddingModel/20200206150926_DCA9FA
 ```
 
 #### Send Predict Request
@@ -108,10 +117,6 @@ misclassifying a lot of non-stress posts as stress post.
 <img src="https://github.com/gillian850413/Insight_Stress_Analysis/blob/master/img/bert_result.png" width="750" height="200" />
 
 For more information, please check notebook directory to see the analysis results of different models.
-
-
-
-
 
 
 ## Reference
