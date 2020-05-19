@@ -5,7 +5,7 @@ natural language processing (NLP) and supervised learning to build models that a
 non-stressful posts. It was inspired by the newly published paper called
 [Dreaddit: A Reddit Dataset for Stress Analysis in Social Media](https://arxiv.org/abs/1911.00133).
 
-For more information, please check out [Slides](bit.ly/37WNKbu)
+For more information, please check out [Slides](https://bit.ly/37WNKbu)
 
 ## Requisites
 - MacOS or Linux
